@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="src/output.css" rel="stylesheet" />
+  </head>
+  <body class="bg-slate-900">
+    
+    <div
+      class="m-auto bg-white text-black max-w-sm mt-32 p-4 rounded-lg shadow-lg"
+    >
+      <div class="flex flex-col my-2">
+        <p class="text-3xl text-center mb-8">QR Code Genrate</p>
+        <p class="font-semibold">Enter your text or url</p>
+        <input
+          type="text"
+          id="qrtext"
+          placeholder="Enter here..."
+          class="bg-white text-black p-2 rounded-lg mt-4 border-2 border-black mb-4"
+        />
+        <div id="imgBox" class="ml-24   ">
+          <img src="" alt="" id="qrImg" />
+        </div>
+        <button
+          class="bg-blue-400 rounded-lg w-full mt-4 h-10"
+          onclick="qrGenerator()"
+        >
+          Genrate QR
+        </button>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    let imgBox = document.getElementById("imgBox");
+    let qrImg = document.getElementById("qrImg");
+    let qrtext = document.getElementById("qrtext");
+
+    function qrGenerator() {
+        if(qrtext.value === ""){
+            alert("Please enter text or url")
+            return
+        }
+        else{
+            imgBox.style.display = "block";
+        }
+      qrImg.src =
+        "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" +
+        qrtext.value;
+    }
+  </script>
+</html>
